@@ -1,0 +1,149 @@
+{% extends 'navigationBar.html' %}
+{% load static %}
+{% block content %}
+
+{#Navigation bar#}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+    
+    .sidenav {
+      height: 100%;
+      width: 220px;
+      position: fixed;
+      z-index: 1;
+      top: 10;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+    
+    .sidenav a {
+      padding: 6px 6px 6px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+    }
+    
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+    
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+    </style>
+    </head>
+    <body>
+    
+    <div class="sidenav">
+
+      {# Stores #}
+
+      <h2>Stores</h2>
+
+      <input type="checkbox" id="Tesco" name="Tesco"
+      checked>
+      <label for="Tesco">Tesco</label><br>
+
+      <input type="checkbox" id="Morrisons" name="Morrisons"
+      checked>
+      <label for="Morrisons">Morrisons</label><br>
+      
+      <input type="checkbox" id="Waitrose" name="Waitrose"
+      checked>
+      <label for="Waitrose">Waitrose</label><br>
+
+      <input type="checkbox" id="Sainsbury's" name="Sainsbury's"
+      checked>
+      <label for="Sainsbury's">Sainsbury's</label>
+
+      {# Price #}
+
+      <h2>Price</h2>
+
+      <input type="text" id="Min" placeholder = "Min" name="Min" size = "1" maxlength = "5">
+      <label for="lname">-</label>
+      <input type="text" id="Min" placeholder = "Min" name="Min" size = "1" maxlength = "5"><br><br>
+      <input type="submit" value="Apply"><br><br>
+
+      {# Price checkbox #}
+
+      <input type="checkbox" id="under_5" name="1"
+      checked>
+      <label for="under_5">Under £5</label><br>
+
+      <input type="checkbox" id="5to15" name="5to15"
+      checked>
+      <label for="5to15">£5 - £15 </label><br>
+
+      {# Manufacturers #}
+
+      <h2>Manufacturers</h2>
+
+      <input type="checkbox" id="cadbury" name="cadbury"
+      checked>
+      <label for="cadbury">Cadbury</label><br>
+
+      <input type="checkbox" id="maltesers" name="maltesers"
+      checked>
+      <label for="maltesers">Maltesers</label><br>
+
+
+    </div>
+       
+    </body>
+
+    <div class="row">
+	
+    <div class="col-lg-4">
+        <center><h1>Tesco</h1></center>
+        <img class="thumbnail" src="{% static 'images/chocolate.png' %}">
+        <div class="box-element product">
+            <h6><strong>Cadbury dairy milk</strong></h6>
+            <hr>
+            <p>Chocolate bar 200g</p>
+    
+            <button  class="btn btn-outline-secondary add-btn">Add to Basket</button>
+            <h4 style="display: inline-block; float: right"><strong>£1.80</strong></h4>
+    
+        </div>
+    </div>
+
+
+	<div class="col-lg-4">
+        <center><h1>Morrisons</h1></center>
+        <img class="thumbnail" src="{% static 'images/chocolate.png' %}">
+        <div class="box-element product">
+            <h6><strong>Cadbury dairy milk</strong></h6>
+            <hr>
+            <p>Chocolate bar 200g</p>
+    
+            <button  class="btn btn-outline-secondary add-btn">Add to Basket</button>
+            <h4 style="display: inline-block; float: right"><strong>£1.80</strong></h4>
+    
+        </div>
+    </div>
+
+	<div class="col-lg-4">
+        <center><h1>Aldi</h1></center>
+        <img class="thumbnail" src="{% static 'images/chocolate.png' %}">
+        <div class="box-element product">
+            <h6><strong>Cadbury dairy milk</strong></h6>
+            <hr>
+            <p>Chocolate bar 200g</p>
+    
+            <button  class="btn btn-outline-secondary add-btn">Add to Basket</button>
+            <h4 style="display: inline-block; float: right"><strong>£1.80</strong></h4>
+    
+        </div>
+    </div>
+</div>
+
+{% endblock %}
