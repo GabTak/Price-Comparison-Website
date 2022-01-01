@@ -1,5 +1,54 @@
 {% extends 'navigationBar.html' %}
 {% load static %}
 {% block content %}
+
+{% include 'searchbar.html' %}
 <h2> Home page </h2>
+
+
+
+<div class="row">
+	
+    <div class="col-lg-3">
+        <center><h1>Categories</h1></center>
+        <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Frozen food</strong></h6>
+        </div>
+        <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+        <div class="box-element product">
+            <h6><strong>Bakery</strong></h6>
+        </div></div>
+
+        <div class="col-lg-3">
+            <center><h1>Categories</h1></center>
+            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+            <div class="box-element product">
+                <h6><strong>Drinks</strong></h6>
+            </div>
+                <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+                <div class="box-element product">
+                    <h6><strong>Vegan</strong></h6>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <center><h1>Categories</h1></center>
+            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+            <div class="box-element product">
+                <h6><strong>Vegetables</strong></h6>
+            </div>
+                <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+                <div class="box-element product">
+                    <h6><strong>Fruit</strong></h6>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
 {% endblock content %}
