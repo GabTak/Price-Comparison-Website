@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from product.models import *
 
 # Create your views here.
@@ -17,3 +16,4 @@ def contents_page_view(request,*args, **kwargs):
     products = Product.objects.all()
     context = {'products' : products}
     return render(request, "contents.html", context)
+

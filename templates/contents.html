@@ -115,7 +115,7 @@
               <hr>
               <p>{{product.weight}}g</p>
       
-              <button  class="btn btn-outline-secondary add-btn">Add to Basket</button>
+              <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Add to Basket</button>
               <h4 style="display: inline-block; float: right"><strong>£{{product.price|floatformat:2}}</strong></h4>
       
           </div>
