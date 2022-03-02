@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from product.models import *
 
 # Create your views here.
 
@@ -13,4 +14,6 @@ def basket_page_view(request, *args, **kwargs):
     return render(request, "basket.html")
 
 def contents_page_view(request,*args, **kwargs):
-    return render(request, "contents.html")
+    products = Product.objects.all()
+    context = {'products' : products}
+    return render(request, "contents.html", context)

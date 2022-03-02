@@ -105,49 +105,23 @@
     <br><br>
 
     <div class="row">
+      
+      {% for product in products %}
+      <div class="col-lg-4">
+          <center><h1>{{product.store}}</h1></center>
+          <img class="thumbnail" src="{% static 'images/chocolate.png' %}">
+          <div class="box-element product">
+              <h6><strong>{{product.name}}</strong></h6>
+              <hr>
+              <p>{{product.weight}}g</p>
+      
+              <button  class="btn btn-outline-secondary add-btn">Add to Basket</button>
+              <h4 style="display: inline-block; float: right"><strong>£{{product.price|floatformat:2}}</strong></h4>
+      
+          </div>
+      </div>
+      {% endfor %}
 	
-    <div class="col-lg-4">
-        <center><h1>Tesco</h1></center>
-        <img class="thumbnail" src="{% static 'images/chocolate.png' %}">
-        <div class="box-element product">
-            <h6><strong>Cadbury dairy milk</strong></h6>
-            <hr>
-            <p>Chocolate bar 200g</p>
-    
-            <button  class="btn btn-outline-secondary add-btn">Add to Basket</button>
-            <h4 style="display: inline-block; float: right"><strong>£1.80</strong></h4>
-    
-        </div>
-    </div>
-
-
-	<div class="col-lg-4">
-        <center><h1>Morrisons</h1></center>
-        <img class="thumbnail" src="{% static 'images/chocolate.png' %}">
-        <div class="box-element product">
-            <h6><strong>Cadbury dairy milk</strong></h6>
-            <hr>
-            <p>Chocolate bar 200g</p>
-    
-            <button  class="btn btn-outline-secondary add-btn">Add to Basket</button>
-            <h4 style="display: inline-block; float: right"><strong>£1.80</strong></h4>
-    
-        </div>
-    </div>
-
-	<div class="col-lg-4">
-        <center><h1>Aldi</h1></center>
-        <img class="thumbnail" src="{% static 'images/chocolate.png' %}">
-        <div class="box-element product">
-            <h6><strong>Cadbury dairy milk</strong></h6>
-            <hr>
-            <p>Chocolate bar 200g</p>
-    
-            <button  class="btn btn-outline-secondary add-btn">Add to Basket</button>
-            <h4 style="display: inline-block; float: right"><strong>£1.80</strong></h4>
-    
-        </div>
-    </div>
 </div>
 
-{% endblock %}
+{% endblock content %}

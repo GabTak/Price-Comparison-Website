@@ -15,6 +15,7 @@ class Customer(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length= 50)
     price = models.DecimalField(max_digits=100, decimal_places=2)
+    weight = models.IntegerField(blank = True, null = True)
     description = models.TextField(blank=True)
     store = models.CharField(max_length=30)
     image = models.CharField(max_length=5000, null = True, blank = True)
@@ -26,4 +27,3 @@ class Product(models.Model):
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
     quantity = models.IntegerField(default=0, null = True, blank = True)
-    
