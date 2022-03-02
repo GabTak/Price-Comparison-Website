@@ -18,11 +18,19 @@ class Product(models.Model):
     weight = models.IntegerField(blank = True, null = True)
     description = models.TextField(blank=True)
     store = models.CharField(max_length=30)
-    image = models.CharField(max_length=5000, null = True, blank = True)
+    image = models.ImageField(null = True, blank = True)
 
     def __str__(self):
         return self.name
 
+    #Prevent error when no image is present for product
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
     
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)

@@ -109,7 +109,7 @@
       {% for product in products %}
       <div class="col-lg-4">
           <center><h1>{{product.store}}</h1></center>
-          <img class="thumbnail" src="{% static 'images/chocolate.png' %}">
+          <img class="thumbnail" src="{{product.imageURL}}">
           <div class="box-element product">
               <h6><strong>{{product.name}}</strong></h6>
               <hr>
