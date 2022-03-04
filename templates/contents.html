@@ -3,6 +3,7 @@
 {% block content %}
 
 {#Navigation bar#}
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -48,9 +49,9 @@
 
       <h2>Stores</h2>
 
-      <input type="checkbox" id="Tesco" name="Tesco"
-      checked>
-      <label for="Tesco">Tesco</label><br>
+      
+      <input type="checkbox" id="Tesco" onclick="myFunction()">
+      <label for="Tesco">Tesco</label><br> 
 
       <input type="checkbox" id="Morrisons" name="Morrisons"
       checked>
@@ -107,14 +108,14 @@
     <div class="row">
       
       {% for product in products %}
-      <div class="col-lg-4">
-          <center><h1>{{product.store}}</h1></center>
+      <div class="col-lg-3">
+        <br><br>
           <img class="thumbnail" src="{{product.imageURL}}">
           <div class="box-element product">
-              <h6><strong>{{product.name}}</strong></h6>
+              <h6><strong>{{product.store}}</strong></h6>
               <hr>
+              <p>{{product.name}}<p>
               <p>{{product.weight}}g</p>
-      
               <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Add to Basket</button>
               <h4 style="display: inline-block; float: right"><strong>£{{product.price|floatformat:2}}</strong></h4>
       

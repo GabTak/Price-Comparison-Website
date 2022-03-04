@@ -17,8 +17,14 @@ def basket_page_view(request, *args, **kwargs):
     return render(request, "basket.html", context)
 
 def contents_page_view(request,*args, **kwargs):
-    products = Product.objects.all()
-    context = {'products' : products}
+    if 'q' in request.GET:
+        q = request.GET['q']
+        products = Product.objects.filter(name__icontains = q)
+    
+    else:
+        products = Product.objects.all()
+
+    context = {'products' : products.order_by('price')}
     
     return render(request, "contents.html", context)
 
