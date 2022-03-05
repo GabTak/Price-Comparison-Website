@@ -45,12 +45,17 @@
     
     <div class="sidenav">
 
-      {# Stores #}
-
-      <h2>Stores</h2>
       
+
       <form method "get" action = "{% url 'contents' %}">
       <div class = "control">
+      
+      {#Search box #}
+      <h2>Item</h2>
+      <input type="text" placeholder="Item" name="q">
+
+      {# Stores #}
+      <br><br><h2>Stores</h2>
       <input type="checkbox" name="Tesco" {%if Tesco %}checked="checked"{% endif %}>
       <label for="Tesco">Tesco</label><br>
 
@@ -65,7 +70,7 @@
 
       {# Price #}
 
-      <h2>Price</h2>
+      <br><br><h2>Price</h2>
 
       <input type="text" placeholder = "Min" name="min_price" size = "1" maxlength = "5">
       <label for="lname">-</label>

@@ -45,7 +45,8 @@ form.searchbar::after {
 </head>
 <body>
 
-<form class="searchbar" style="margin:auto;max-width:400px">
+
+<form class="searchbar" style="margin:auto;max-width:400px" method "get" action = "{% url 'contents' %}">
   <input type="text" placeholder="What are you looking for?" name="q">
   <button type="submit">Search</button>
 </form>
