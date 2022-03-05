@@ -47,7 +47,7 @@ def contents_page_view(request,*args, **kwargs):
     tesco = request.GET.get('Tesco')
     morrisons = request.GET.get('Morrisons')
     waitrose = request.GET.get('Waitrose')
-    sainsburys = request.GET.get('Sainburys')
+    sainsburys = request.GET.get("Sainsburys")
     stores_to_display = []
 
     #Get list of stores to display
@@ -55,10 +55,11 @@ def contents_page_view(request,*args, **kwargs):
         stores_to_display.append('Tesco')
     if morrisons:
         stores_to_display.append('Morrisons')
-    if waitrose:
-        stores_to_display.append('Waitrose')
     if sainsburys:
         stores_to_display.append('Sainsburys')
+    if waitrose:
+        stores_to_display.append('Waitrose')
+    
     
     if (len(stores_to_display) == 0):
         products
