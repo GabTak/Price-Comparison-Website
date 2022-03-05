@@ -48,53 +48,29 @@
       {# Stores #}
 
       <h2>Stores</h2>
-
       
-      <input type="checkbox" id="Tesco" onclick="myFunction()">
-      <label for="Tesco">Tesco</label><br> 
+      <form method "get" action = "{% url 'contents' %}">
+      <div class = "control">
+      <input type="checkbox" name="Tesco" {%if Tesco %}checked="checked"{% endif %}>
+      <label for="Tesco">Tesco</label><br>
 
-      <input type="checkbox" id="Morrisons" name="Morrisons"
-      checked>
-      <label for="Morrisons">Morrisons</label><br>
+      <input type="checkbox" name="Waitrose" {%if Waitrose %}checked="checked"{% endif %}>
+      <label for="Waitrose">Waitrose</label><br></div>
       
-      <input type="checkbox" id="Waitrose" name="Waitrose"
-      checked>
-      <label for="Waitrose">Waitrose</label><br>
+      <input type="checkbox" name="Morrisons" {%if Morrisons %}checked="checked"{% endif %}>
+      <label for="Waitrose">Morrisons</label><br>
 
-      <input type="checkbox" id="Sainsbury's" name="Sainsbury's"
-      checked>
-      <label for="Sainsbury's">Sainsbury's</label>
+      <input type="checkbox" name="Sainsburys" {%if Sainsburys %}checked="checked"{% endif %}>
+      <label for="Sainsburys">Sainsbury's</label>
 
       {# Price #}
 
       <h2>Price</h2>
 
-      <input type="text" id="Min" placeholder = "Min" name="Min" size = "1" maxlength = "5">
+      <input type="text" placeholder = "Min" name="min_price" size = "1" maxlength = "5">
       <label for="lname">-</label>
-      <input type="text" id="Min" placeholder = "Min" name="Min" size = "1" maxlength = "5"><br><br>
-      <input type="submit" value="Apply"><br><br>
-
-      {# Price checkbox #}
-
-      <input type="checkbox" id="under_5" name="1"
-      checked>
-      <label for="under_5">Under £5</label><br>
-
-      <input type="checkbox" id="5to15" name="5to15"
-      checked>
-      <label for="5to15">£5 - £15 </label><br>
-
-      {# Manufacturers #}
-
-      <h2>Manufacturers</h2>
-
-      <input type="checkbox" id="cadbury" name="cadbury"
-      checked>
-      <label for="cadbury">Cadbury</label><br>
-
-      <input type="checkbox" id="maltesers" name="maltesers"
-      checked>
-      <label for="maltesers">Maltesers</label><br>
+      <input type="text" placeholder = "Max" name="max_price" size = "1" maxlength = "5"><br><br>
+      <button type="submit">Apply</button></form>
 
 
     </div>
