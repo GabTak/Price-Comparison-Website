@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from product.models import *
+from django.db.models import Q
 
 # Create your views here.
 
@@ -19,7 +20,8 @@ def basket_page_view(request, *args, **kwargs):
 def contents_page_view(request,*args, **kwargs):
     if 'q' in request.GET:
         q = request.GET['q']
-        products = Product.objects.filter(name__icontains = q)
+        products = Product.objects.filter(Q(name__icontains=q) | Q(store__icontains=q) | Q(description__icontains=q))
+        
     
     else:
         products = Product.objects.all()
