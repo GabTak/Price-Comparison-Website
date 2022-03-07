@@ -21,7 +21,7 @@ def basket_page_view(request, *args, **kwargs):
 def contents_page_view(request,*args, **kwargs):
 
     
-    # #Search items
+    #Search items by name, store and description
     if 'q' in request.GET:
         q = request.GET['q']
         products = Product.objects.filter(Q(name__icontains=q) | Q(store__icontains=q) | Q(description__icontains=q))
@@ -43,22 +43,21 @@ def contents_page_view(request,*args, **kwargs):
         products = products.filter(price__range=(min_price, max_price))
 
     #Stores
-
     tesco = request.GET.get('Tesco')
     morrisons = request.GET.get('Morrisons')
     waitrose = request.GET.get('Waitrose')
     sainsburys = request.GET.get("Sainsburys")
-    stores_to_display = []
+    stores_to_display = set()
 
     #Get list of stores to display
     if tesco:
-        stores_to_display.append('Tesco')
+        stores_to_display.add('Tesco')
     if morrisons:
-        stores_to_display.append('Morrisons')
+        stores_to_display.add('Morrisons')
     if sainsburys:
-        stores_to_display.append('Sainsburys')
+        stores_to_display.add('Sainsburys')
     if waitrose:
-        stores_to_display.append('Waitrose')
+        stores_to_display.add('Waitrose')
     
     
     if (len(stores_to_display) == 0):
