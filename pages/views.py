@@ -33,7 +33,8 @@ def register_page_view(request, *args, **kwargs):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid: 
-            form.save()
+            new_user = form.save()
+            Customer.objects.create(user = new_user, name = new_user)
 
     context = {'form' : form}
     return render(request, "register.html", context)
