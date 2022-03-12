@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from product.models import *
 from django.db.models import Q
 from django.db.models import Max
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
+from .forms import CreateUserForm, LoginForm
 
 # Create your views here.
 
@@ -10,6 +14,29 @@ def home_page_view(request, *args, **kwargs):
 
 def help_page_view(request, *args, **kwargs):
     return render(request, "help.html")
+
+def login_page_view(request, *args, **kwargs):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username = username, password = password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+    context = {}
+    return render(request, "login.html", context)
+
+def register_page_view(request, *args, **kwargs):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid: 
+            form.save()
+
+    context = {'form' : form}
+    return render(request, "register.html", context)
 
 def basket_page_view(request, *args, **kwargs):
     
