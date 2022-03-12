@@ -1,4 +1,4 @@
-{% extends 'navigationBar.html' %}
+{% extends 'main.html' %}
 {% load static %}
 {% block content %}
 
@@ -39,14 +39,12 @@
       .sidenav {padding-top: 15px;}
       .sidenav a {font-size: 18px;}
     }
+
     </style>
     </head>
     <body>
     
     <div class="sidenav">
-
-      
-
       <form method "get" action = "{% url 'contents' %}">
       <div class = "control">
       
@@ -86,6 +84,7 @@
     {% include 'searchbar.html' %}
     <br><br>
 
+    {#Dynamic data output#}
     <div class="row">
       
       {% for product in products %}
@@ -99,7 +98,6 @@
               <p>{{product.weight}}g</p>
               <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Add to Basket</button>
               <h4 style="display: inline-block; float: right"><strong>£{{product.price|floatformat:2}}</strong></h4>
-      
           </div>
       </div>
       {% endfor %}

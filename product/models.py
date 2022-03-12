@@ -34,8 +34,7 @@ class Product(models.Model):
     
 
 class Order(models.Model):
-    #customer = models.ForeignKey(Customer, on_delete= models.SET_NULL, null= True, blank= True)
-    complete = models.BooleanField(default= False, null= True, blank= False)
+    customer = models.ForeignKey(Customer, on_delete= models.SET_NULL, null= True, blank= True)
 
     def __str__(self):
         return str(self.id)

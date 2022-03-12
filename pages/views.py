@@ -12,15 +12,18 @@ def help_page_view(request, *args, **kwargs):
     return render(request, "help.html")
 
 def basket_page_view(request, *args, **kwargs):
-    order, created = Order.objects.get_or_create(complete = False)
-    items = order.orderitem_set.all()
+    
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer = customer)
+        items = order.orderitem_set.all()
+    else:
+        items = []
     context = {'items' : items}
 
     return render(request, "basket.html", context)
 
 def contents_page_view(request,*args, **kwargs):
-
-    
     #Search items by name, store and description
     if 'q' in request.GET:
         q = request.GET['q']
