@@ -39,18 +39,6 @@ def login_page_view(request, *args, **kwargs):
     context = {'form' : form}
     return render(request, "login.html", context)
 
-def register_page_view(request, *args, **kwargs):
-    form = CreateUserForm()
-
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid: 
-            new_user = form.save()
-            Customer.objects.create(user = new_user, name = new_user)
-
-    context = {'form' : form}
-    return render(request, "register.html", context)
-
 def basket_page_view(request, *args, **kwargs):
     
     if request.user.is_authenticated:
