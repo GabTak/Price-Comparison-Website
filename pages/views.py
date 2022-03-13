@@ -16,15 +16,27 @@ def help_page_view(request, *args, **kwargs):
     return render(request, "help.html")
 
 def login_page_view(request, *args, **kwargs):
+    form = CreateUserForm()
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username = username, password = password)
+        #Login
+        if request.POST.get('submit') == 'Log in':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username = username, password = password)
 
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-    context = {}
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+
+        #Register
+        elif request.POST.get('submit') == 'Sign up':
+            form = CreateUserForm(request.POST)
+            if form.is_valid: 
+                new_user = form.save()
+                Customer.objects.create(user = new_user, name = new_user)
+
+
+    context = {'form' : form}
     return render(request, "login.html", context)
 
 def register_page_view(request, *args, **kwargs):
