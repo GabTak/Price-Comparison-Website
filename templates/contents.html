@@ -38,6 +38,11 @@
     @media screen and (max-height: 450px) {
       .sidenav {padding-top: 15px;}
       .sidenav a {font-size: 18px;}
+      
+    }
+
+    .card{
+      font-size:13px;
     }
 
     </style>
@@ -85,21 +90,25 @@
     <br><br>
 
     {#Dynamic data output#}
-    <div class="row">
+    <div class = "row">
       
       {% for product in products %}
-      <div class="col-lg-3">
+      <div class="col-sm-3 my-4 card-deck">
+      <div class="card">
         <br><br>
-          <img class="thumbnail" src="{{product.imageURL}}">
-          <div class="box-element product">
-              <h6><strong>{{product.store}}</strong></h6>
+          <img class="card-img-top" src="{{product.imageURL}}" alt="Card image cap">
+          <div class="card-body">
+              <h6 class="card-title"><strong>{{product.store}}</strong></h6>
               <hr>
-              <p>{{product.name}}<p>
-              <p>{{product.weight}}g</p>
-              <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Add to Basket</button>
-              <h4 style="display: inline-block; float: right"><strong>£{{product.price|floatformat:2}}</strong></h4>
+              <p class="card-text">{{product.name}}</p>
+              <p class="card-text">{{product.weight}}g</p>
+          </div>
+          <div class = "card-footer">
+              <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary btn-sm add-btn update-cart">Add to Basket</button>
+              <h5 style="display: inline-block; float: right"><strong>£{{product.price|floatformat:2}}</strong></h5>
           </div>
       </div>
+    </div>
       {% endfor %}
 	
 </div>
