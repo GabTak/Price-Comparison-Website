@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.db.models import Max
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
 
 from .forms import CreateUserForm, LoginForm
 
@@ -16,28 +17,39 @@ def help_page_view(request, *args, **kwargs):
     return render(request, "help.html")
 
 def login_page_view(request, *args, **kwargs):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username = username, password = password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.info(request, 'Username or Password is incorrect')
+
+
+    context = {}
+    return render(request, "login.html", context)
+
+
+def register_page_view(request, *args, **kwargs):
     form = CreateUserForm()
     if request.method == 'POST':
-        #Login
-        if request.POST.get('submit') == 'Log in':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            user = authenticate(request, username = username, password = password)
-
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-
-        #Register
-        elif request.POST.get('submit') == 'Sign up':
-            form = CreateUserForm(request.POST)
-            if form.is_valid: 
-                new_user = form.save()
-                Customer.objects.create(user = new_user, name = new_user)
-
+        form = CreateUserForm(request.POST)
+        if form.is_valid(): 
+            new_user = form.save()
+            Customer.objects.create(user = new_user, name = new_user)
+            return redirect('login')
 
     context = {'form' : form}
-    return render(request, "login.html", context)
+    return render(request, "register.html", context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
 
 def basket_page_view(request, *args, **kwargs):
     

@@ -88,25 +88,20 @@
 
 
 
-
-<form class="form form--login framed" method = "POST" action = "">
+<form class="form form--signup framed" method = "POST" action = "">
   {% csrf_token %}
-  <h2>Log in</h2>
-  <input type="text" placeholder="Username" name = "username" class="input input--top" /required>
-  <input type="password" placeholder="Password" name = "password" class="input" /required>
+  <h2>Sign in</h2>
+  <input type="text" name = "username" placeholder = "{{form.username.label}}"  class="input" /required>
+  <input type="password" name = "password1" placeholder= "{{form.password1.label}}" class="input" /required>
+  <input type="password" name = "password2" placeholder= "{{form.password2.label}}" class="input" /required>
+  {{form.errors}}
+  <input type="submit" value="Sign up" name = "submit" class="input input--submit" />
+  <a href="{% url 'login' %}" class="text text--small text--centered"><label> Not new? <b>Log in</b></label></a>
 
-  {%for message in messages%}
-  <p id = "messages">{{message}}</p>
-  {%endfor%}
-  
-  <input type="submit" value="Log in" name = "submit" class="input input--submit" />
-  <a href="{% url 'register' %}" class="text text--small text--centered"><label>New? <b>Sign in</b></label></a>
 </form>
-
 
 
 </body>
 </html>
 
 {% endblock content %}
-
