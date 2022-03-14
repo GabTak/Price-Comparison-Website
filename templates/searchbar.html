@@ -24,7 +24,7 @@ form.searchbar button {
   float: left;
   width: 20%;
   padding: 10px;
-  background: #2196F3;
+  background: #3DBEA8;
   color: white;
   font-size: 17px;
   border: 1px solid grey;
@@ -33,7 +33,7 @@ form.searchbar button {
 }
 
 form.searchbar button:hover {
-  background: #0b7dda;
+  background: #3DBEA8;
 }
 
 form.searchbar::after {
@@ -47,7 +47,7 @@ form.searchbar::after {
 
 
 <form class="searchbar" style="margin:auto;max-width:400px" method "get" action = "{% url 'contents' %}">
-  <input type="text" placeholder="What are you looking for?" name="q">
+  <input type="text" placeholder="What are you looking for?" name="q" required>
   <button type="submit">Search</button>
 </form>
 

@@ -52,7 +52,7 @@
       border-top: 0;
     }
     .input--submit {
-      background-color: rgba(92,168,214,1);
+      background-color: rgba(61,190,168,1);
       color: #fff;
       font-weight: bold;
       cursor: pointer;
@@ -94,7 +94,9 @@
   <input type="text" name = "username" placeholder = "{{form.username.label}}"  class="input" /required>
   <input type="password" name = "password1" placeholder= "{{form.password1.label}}" class="input" /required>
   <input type="password" name = "password2" placeholder= "{{form.password2.label}}" class="input" /required>
-  {{form.errors}}
+  {{form.username.errors}}
+  {{form.password1.errors}}
+  {{form.password2.errors}}
   <input type="submit" value="Sign up" name = "submit" class="input input--submit" />
   <a href="{% url 'login' %}" class="text text--small text--centered"><label> Not new? <b>Log in</b></label></a>
 
