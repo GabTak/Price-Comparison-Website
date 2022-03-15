@@ -11,19 +11,19 @@
       font-family: "Lato", sans-serif;
     }
     
-    .sidenav {
+    .sidebar {
       height: 100%;
-      width: 220px;
+      width: 0;
       position: fixed;
       z-index: 1;
-      top: 10;
+      top: 5;
       left: 0;
       background-color: #111;
       overflow-x: hidden;
       padding-top: 20px;
     }
     
-    .sidenav a {
+    .sidebar a {
       padding: 6px 6px 6px 32px;
       text-decoration: none;
       font-size: 25px;
@@ -31,7 +31,7 @@
       display: block;
     }
     
-    .sidenav a:hover {
+    .sidebar a:hover {
       color: #f1f1f1;
     }
     
@@ -57,11 +57,40 @@
     border-color: #66A1B8;
 }
 
+#main {
+  top: -50x;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+
     </style>
     </head>
     <body>
-    
-    <div class="sidenav">
+      <div id = "main">
+        <button class="openbtn" onclick="openNav()">☰</button>  
+      </div>
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
       <form method "get" action = "{% url 'contents' %}">
       <div class = "control">
       
@@ -91,10 +120,23 @@
       <label for="lname">-</label>
       <input type="text" placeholder = "Max" name="max_price" size = "1" maxlength = "5"><br><br>
       <button type="submit">Apply</button></form>
-
-
     </div>
        
+    
+    
+    <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+    }
+    </script>
+
+
     </body>
 
 
