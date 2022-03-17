@@ -59,7 +59,7 @@ ROOT_URLCONF = 'Price_Comparison_Website.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/University of Lincoln work/Year 3/Project/Price Comparison Website/templates/'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
