@@ -111,7 +111,7 @@ def contents_page_view(request,*args, **kwargs):
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer = customer)
-        items = order.orderitem_set.all().values_list('product_id',  flat=True)
+        items = dict(order.orderitem_set.all().values_list('product_id', 'quantity'))
     else:
         items = []
     
