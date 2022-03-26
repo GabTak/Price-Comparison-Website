@@ -143,6 +143,10 @@
     {% include 'searchbar.html' %}
     <br><br>
 
+    {{items}}
+    {% if 21 in items%}
+    <p>Test</p>
+    {%endif%}
     {#Dynamic data output#}
     <div class = "row">
       
@@ -155,10 +159,14 @@
               <h6 class="card-title"><strong>{{product.store}}</strong></h6>
               <hr>
               <p class="card-text">{{product.name}}</p>
-              <p class="card-text">{{product.weight}}g</p>
+              <p class="card-text">{{product.weight}}</p>
           </div>
           <div class = "card-footer">
-              <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary btn-sm add-btn update-cart">Add to Basket</button>
+            {% if product.id in items%}
+              <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary btn-sm add-btn update-cart">Add Another</button>
+              {%else%}
+              <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary btn-sm add-btn update-cart">Add To Basket</button>
+              {%endif%}
               <h5 style="display: inline-block; float: right"><strong>£{{product.price|floatformat:2}}</strong></h5>
           </div>
       </div>

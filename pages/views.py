@@ -52,7 +52,6 @@ def logoutUser(request):
 
 
 def basket_page_view(request, *args, **kwargs):
-    
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer = customer)
@@ -109,9 +108,14 @@ def contents_page_view(request,*args, **kwargs):
         products = products.filter(store__in=(stores_to_display))
 
 
-
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer = customer)
+        items = order.orderitem_set.all().values_list('product_id',  flat=True)
+    else:
+        items = []
     
-    context ={'products' : products.order_by('price')}
+    context ={'products' : products.order_by('price'), 'items' : items}
     
     return render(request, "contents.html", context)
 

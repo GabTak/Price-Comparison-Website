@@ -2,6 +2,23 @@
 {% load static %}
 {% block content %}
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+		.btn-outline-dark {
+			color: #212529;
+			background-color: #fff;
+			border-color: #ABCCD8;
+		}
+	  
+		.btn-outline-dark:hover {
+		  color: #212529;
+		  background-color: #66A1B8;
+		  border-color: #66A1B8;
+	  }
+	</style>
+</head>
+
 <div class="box-element">
     <a  class="btn btn-outline-dark" href="{% url 'contents' %}">Continue Shopping</a>
 	<div class="cart-row">
