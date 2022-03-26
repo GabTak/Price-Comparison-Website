@@ -157,13 +157,14 @@
               <p class="card-text">{{product.weight}}</p>
           </div>
           <div class = "card-footer">
+            <h5><strong>£{{product.price|floatformat:2}}</strong></h5>
             {% if product.id in items%}
-              <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary btn-sm add-btn update-cart">Add Another</button>
-              <p>Quantity: {{items|get_item:product.id}}</p>
+            <button data-product = {{product.id}} data-action = "remove" class="btn btn-outline-secondary btn-sm add-btn update-cart">-</button>
+            <p style="display: inline"><strong>{{items|get_item:product.id}}</strong></p>
+            <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary btn-sm add-btn update-cart">+</button>
               {%else%}
               <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary btn-sm add-btn update-cart">Add To Basket</button>
               {%endif%}
-              <h5 style="display: inline-block; float: right"><strong>£{{product.price|floatformat:2}}</strong></h5>
           </div>
       </div>
     </div>
