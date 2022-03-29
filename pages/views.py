@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from product.models import *
 from django.db.models import Q
-from django.db.models import Max
+from django.db.models import Max, Sum
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -11,7 +11,18 @@ from .forms import CreateUserForm, LoginForm
 # Create your views here.
 
 def home_page_view(request, *args, **kwargs):
-    return render(request, "home.html")
+
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer = customer)
+        cartTotal = order.orderitem_set.all().aggregate(sum = Sum('quantity'))['sum']
+        if cartTotal is None: cartTotal = ''
+
+    else:
+        cartTotal = ''
+
+    context = {'cartTotal' : cartTotal}
+    return render(request, "home.html", context)
 
 def help_page_view(request, *args, **kwargs):
     return render(request, "help.html")
@@ -56,9 +67,13 @@ def basket_page_view(request, *args, **kwargs):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer = customer)
         items = order.orderitem_set.all()
+        cartTotal = order.orderitem_set.all().aggregate(sum = Sum('quantity'))['sum']
+        if cartTotal is None: cartTotal = ''
+
     else:
         items = []
-    context = {'items' : items}
+        cartTotal = ''
+    context = {'items' : items, 'cartTotal' : cartTotal}
 
     return render(request, "basket.html", context)
 
@@ -112,10 +127,15 @@ def contents_page_view(request,*args, **kwargs):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer = customer)
         items = dict(order.orderitem_set.all().values_list('product_id', 'quantity'))
+        cartTotal = order.orderitem_set.all().aggregate(sum = Sum('quantity'))['sum']
+        if cartTotal is None: cartTotal = ''
+        
+        
     else:
         items = []
+        cartTotal = ''
     
-    context ={'products' : products.order_by('price'), 'items' : items}
+    context ={'products' : products.order_by('price'), 'items' : items, 'cartTotal' : cartTotal}
     
     return render(request, "contents.html", context)
 

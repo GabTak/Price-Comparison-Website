@@ -58,7 +58,7 @@
       {%endif%}
 
       <a href="{% url 'basket' %}"><img  id="cart-icon" src="{% static 'images/cart.png' %}"></a>
-      <span style="color: white">&nbsp;Trolley</span>
+      <p style="color: white" id="cart-total">{{cartTotal}}</p>
       
           </div>
         </div>

@@ -21,6 +21,8 @@
       background-color: #111;
       overflow-x: hidden;
       padding-top: 20px;
+      transition: 0.7s;
+      opacity: 0.9;
     }
     
     .sidebar a {
@@ -33,6 +35,7 @@
     
     .sidebar a:hover {
       color: #f1f1f1;
+      tansition: 0.4s;
     }
     
     @media screen and (max-height: 450px) {
@@ -87,7 +90,7 @@
     </head>
     <body>
       <div id = "main">
-        <button class="openbtn" onclick="openNav()">☰</button>  
+        <button style="float: left" class="openbtn" onclick="openNav()">☰</button>  
       </div>
     <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -138,7 +141,6 @@
 
 
     </body>
-
 
     {% include 'searchbar.html' %}
     <br><br>
