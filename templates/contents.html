@@ -11,33 +11,6 @@
       font-family: "Lato", sans-serif;
     }
     
-    .sidebar {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 1;
-      top: 5;
-      left: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      padding-top: 20px;
-      transition: 0.7s;
-      opacity: 0.9;
-    }
-    
-    .sidebar a {
-      padding: 6px 6px 6px 32px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #818181;
-      display: block;
-    }
-    
-    .sidebar a:hover {
-      color: #f1f1f1;
-      tansition: 0.4s;
-    }
-    
     @media screen and (max-height: 450px) {
       .sidenav {padding-top: 15px;}
       .sidenav a {font-size: 18px;}
@@ -60,40 +33,107 @@
     border-color: #66A1B8;
 }
 
-#main {
-  top: -50x;
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.sidebar .closebtn {
+#checkbox, .btn span { /* Hide the checkbox input & word "Menu" in the button */
+    display: none;
+}
+
+/* Menu button - starts */
+.openbtn {
+  left: 0;
+  top: 55px;
+  position: fixed;
+  display: block;
+  background-color: #247D9E;
+  color: #fff;
+  width: 55px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: width .3s ease-in-out;
+}
+/* Menu button - ends */
+
+/* Sidebar - starts */
+.sidebar {
+  top: 105px;
+  background-color: #111;
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  z-index: 1111;
+  left: 0;
+  transition: transform .3s ease-in-out;
+  transform: translateX(-250px);
+}
+
+.sidebar ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.sidebar ul a {
+  position: relative;
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+  color: #BAB5BD;
+  padding: 15px 20px;
+  font-size: 16px;
+}
+
+.sidebar ul a li i {
+  margin-right: 15px;
+}
+
+.sidebar ul a:hover, .sidebar ul a.active {
+  background-color: #161920;
+  color: #fff;
+}
+
+.sidebar ul a:hover::before, .sidebar ul a.active::before {
   position: absolute;
   top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+  left: 0;
+  content: "";
+  background-color: #247D9E;
+  width: 4px;
+  height: 100%;
+}
+/* Sidebar - ends */
+
+/* Effect of showing the sidebar - starts */
+#checkbox:checked ~ .sidebar {
+  transform: translateX(0);
 }
 
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
+#checkbox:checked + .openbtn {
+  width: 250px;
+  padding: 0 20px;
 }
 
-.openbtn:hover {
-  background-color: #444;
+#checkbox:checked + .openbtn span { /* Show again the word "Menu" in the button */
+  display: inline;
 }
+
+
 
 
     </style>
     </head>
     <body>
-      <div id = "main">
-        <button style="float: left" class="openbtn" onclick="openNav()">☰</button>  
-      </div>
-    <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+
+      <input type="checkbox" id="checkbox">
+      <label class="openbtn" for="checkbox"><span>☰ Menu</span></label>
+
+    <div class="sidebar">
       <form method "get" action = "{% url 'contents' %}">
       <div class = "control">
       
@@ -130,12 +170,12 @@
     <script>
     function openNav() {
       document.getElementById("mySidebar").style.width = "250px";
-      document.getElementById("main").style.marginLeft = "250px";
+      document.getElementById("main").style.visibility = "hidden";
     }
     
     function closeNav() {
       document.getElementById("mySidebar").style.width = "0";
-      document.getElementById("main").style.marginLeft= "0";
+      document.getElementById("main").style.visibility= "visible";
     }
     </script>
 
