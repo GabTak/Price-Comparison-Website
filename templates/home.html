@@ -6,22 +6,15 @@
 <head>
     <style>
         * {
-            font-family: Lato;
             margin: 0;
             padding: 0;
             --transition: 0.15s;
             --border-radius: 0.5rem;
-            --background: #ffc107;
-            --box-shadow: #ffc107;
+            --background: #3A6B7E;
+            --box-shadow: #3A6B7E;
           }
           
           .cont-bg {
-            min-height: 100vh;
-            background-image: radial-gradient(
-              circle farthest-corner at 7.2% 13.6%,
-              rgba(37, 249, 245, 1) 0%,
-              rgba(8, 70, 218, 1) 90%
-            );
             padding: 1rem;
             display: flex;
             flex-direction: column;
@@ -30,7 +23,7 @@
           }
           
           .cont-title {
-            color: white;
+            color: black;
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 1rem;
@@ -44,8 +37,8 @@
           }
           
           .cont-checkbox {
-            width: 300px;
-            height: 200px;
+            width: 320px;
+            height: 250px;
             border-radius: var(--border-radius);
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
             background: white;
@@ -97,7 +90,7 @@
           
           label img {
             width: 100%;
-            height: 70%;
+            height: 100%;
             object-fit: cover;
             clip-path: polygon(0% 0%, 100% 0, 100% 81%, 50% 100%, 0 81%);
             -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
@@ -135,18 +128,8 @@
             transition: stroke-dashoffset 0.4s ease var(--transition);
             stroke-dashoffset: 16px;
           }
-          
-          label .info {
-            text-align: center;
-            margin-top: 0.2rem;
-            font-weight: 600;
-            font-size: 0.8rem;
-          }
         </style>
     </head>
-
-
-{% include 'searchbar.html' %}
 
 
 
@@ -158,52 +141,47 @@
       <div class="cont-checkbox">
         <input type="checkbox" id="myCheckbox-1" name = "Tesco" {%if Tesco %}checked="checked"{% endif %}>
         <label for="myCheckbox-1">
-            <img src="{% static 'images/placeholder.png' %}">
+            <img src="{% static 'images/Tesco logo.png' %}">
           <span class="cover-checkbox">
             <svg viewBox="0 0 12 10">
               <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
             </svg>
           </span>
-          <div class="info">Tesco</div>
         </label>
       </div>
       <div class="cont-checkbox">
         <input type="checkbox" id="myCheckbox-2" name = "Morrisons" {%if Morrisons %}checked="checked"{% endif %}>
         <label for="myCheckbox-2">
-            <img src="{% static 'images/placeholder.png' %}">
+            <img src="{% static 'images/Morrisons logo.png' %}">
           <span class="cover-checkbox">
             <svg viewBox="0 0 12 10">
               <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
             </svg>
           </span>
-          <div class="info">Morrisons</div>
         </label>
       </div>
     </div>
-
     <div class="cont-main">
     <div class="cont-checkbox">
         <input type="checkbox" id="myCheckbox-3" name = "Waitrose" {%if Waitrose %}checked="checked"{% endif %}>
         <label for="myCheckbox-3">
-            <img src="{% static 'images/placeholder.png' %}">
+            <img src="{% static 'images/Waitrose logo.png' %}">
           <span class="cover-checkbox">
             <svg viewBox="0 0 12 10">
               <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
             </svg>
           </span>
-          <div class="info">Waitrose</div>
         </label>
       </div>
       <div class="cont-checkbox">
         <input type="checkbox" id="myCheckbox-4" name = "Sainsburys" {%if Sainsburys %}checked="checked"{% endif %}>
         <label for="myCheckbox-4">
-            <img src="{% static 'images/placeholder.png' %}">
+            <img src="{% static 'images/Sainsburys logo.png' %}">
           <span class="cover-checkbox">
             <svg viewBox="0 0 12 10">
               <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
             </svg>
           </span>
-          <div class="info">Sainsbury's</div>
         </label>
       </div>
     </div>
@@ -211,6 +189,7 @@
     <button type="submit">Apply</button></form>
   </div>
 </div>
+
 
 {% endblock content %}
 
