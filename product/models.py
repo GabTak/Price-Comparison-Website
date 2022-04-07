@@ -19,11 +19,12 @@ class Customer(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length= 150)
     price = models.DecimalField(max_digits=100, decimal_places=2)
-    weight = models.CharField(blank = True, null = True, max_length=20)
-    description = models.TextField(null = True, blank=True)
     store = models.CharField(max_length=30)
+    category = models.CharField(max_length=150)
     image = models.ImageField(null = True, blank = True)
     image_url = models.URLField()
+
+   
 
     def __str__(self):
         return self.name
@@ -37,7 +38,7 @@ class Product(models.Model):
             url = ''
         return url
 
-    def save(self, *args, **kwargs):
+    def clean(self, *args, **kwargs):
         if self.image_url and not self.image:
             img_temp = NamedTemporaryFile(delete=True)
             img_temp.write(urlopen(self.image_url).read())

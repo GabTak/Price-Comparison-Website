@@ -81,7 +81,7 @@ def contents_page_view(request,*args, **kwargs):
     #Search items by name, store and description
     if 'q' in request.GET:
         q = request.GET['q']
-        products = Product.objects.filter(Q(name__icontains=q) | Q(store__icontains=q) | Q(description__icontains=q))
+        products = Product.objects.filter(Q(name__icontains=q) | Q(store__icontains=q) | Q(category__icontains=q))
         
     else:
         products = Product.objects.all()
@@ -135,7 +135,7 @@ def contents_page_view(request,*args, **kwargs):
         items = []
         cartTotal = ''
     
-    context ={'products' : products.order_by('price'), 'items' : items, 'cartTotal' : cartTotal}
+    context ={'products' : products.order_by('name'), 'items' : items, 'cartTotal' : cartTotal}
     
     return render(request, "contents.html", context)
 
