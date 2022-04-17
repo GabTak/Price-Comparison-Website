@@ -16,9 +16,21 @@
 		  background-color: #66A1B8;
 		  border-color: #66A1B8;
 	  }
+
+	  .col-lg-2{
+		right: 0;
+		position: fixed;
+	  }
 	</style>
 </head>
 
+		<div class = "row">
+		<div class = "col-lg-2">
+		<div class="box-element" id = "form-wrapper">
+			<a  class="btn btn-outline-dark" href="{% url 'contents' %}">Find cheapest price</a>
+		</div></div>
+
+		<div class = "col-lg-12">
 <div class="box-element">
     <a  class="btn btn-outline-dark" href="{% url 'contents' %}">Continue Shopping</a>
 	<div class="cart-row">

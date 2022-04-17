@@ -27,6 +27,9 @@ def home_page_view(request, *args, **kwargs):
 def help_page_view(request, *args, **kwargs):
     return render(request, "help.html")
 
+def cheapest_price_view(request, *args, **kwargs):
+    return render(request, "cheapest_price.html")
+
 def login_page_view(request, *args, **kwargs):
 
     if request.method == 'POST':
