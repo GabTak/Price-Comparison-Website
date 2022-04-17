@@ -135,7 +135,7 @@ def contents_page_view(request,*args, **kwargs):
         items = []
         cartTotal = ''
     
-    context ={'products' : products.order_by('name'), 'items' : items, 'cartTotal' : cartTotal}
+    context ={'products' : products.order_by('name', 'price'), 'items' : items, 'cartTotal' : cartTotal}
     
     return render(request, "contents.html", context)
 
