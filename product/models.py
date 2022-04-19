@@ -23,7 +23,10 @@ class Product(models.Model):
     category = models.CharField(max_length=150)
     image = models.ImageField(null = True, blank = True)
     image_url = models.URLField()
-    
+    tesco_match = models.IntegerField(null = True, blank = True)
+    waitrose_match = models.IntegerField(null = True, blank = True)
+    sainsburys_match = models.IntegerField(null = True, blank = True)
+    morrisons_match = models.IntegerField(null = True, blank = True)
 
    
 
@@ -48,8 +51,24 @@ class Product(models.Model):
         super(Product, self).save(*args, **kwargs)
 
     @property
-    def product_by_id(self):
-        return Product.objects.get(pk=self.id)
+    def tesco_match_id(self):
+        return Product.objects.get(pk=self.tesco_match)
+
+    @property
+    def waitrose_match_id(self):
+        return Product.objects.get(pk=self.waitrose_match)
+        
+    @property
+    def sainsburys_match_id(self):
+        return Product.objects.get(pk=self.sainsburys_match)
+
+    @property
+    def morrisons_match_id(self):
+        return Product.objects.get(pk=self.morrisons_match)
+
+    
+
+
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete= models.SET_NULL, null= True, blank= True)
