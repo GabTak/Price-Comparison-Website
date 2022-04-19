@@ -23,6 +23,7 @@ class Product(models.Model):
     category = models.CharField(max_length=150)
     image = models.ImageField(null = True, blank = True)
     image_url = models.URLField()
+    
 
    
 
@@ -45,7 +46,10 @@ class Product(models.Model):
             img_temp.flush()
             self.image.save(f"image_{self.pk}.jpg", File(img_temp))
         super(Product, self).save(*args, **kwargs)
-    
+
+    @property
+    def product_by_id(self):
+        return Product.objects.get(pk=self.id)
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete= models.SET_NULL, null= True, blank= True)

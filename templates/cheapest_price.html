@@ -1,1 +1,71 @@
-<h1>Cheapest Price</h1>
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+		.btn-outline-dark {
+			color: #212529;
+			background-color: #fff;
+			border-color: #ABCCD8;
+		}
+	  
+		.btn-outline-dark:hover {
+		  color: #212529;
+		  background-color: #66A1B8;
+		  border-color: #66A1B8;
+	  }
+	</style>
+</head>
+
+		<div class = "row">
+		<div class = "col-lg-6">
+		<div class="box-element" id = "form-wrapper">
+			<h1>Waitrose</h1>
+		</div></div>
+
+	<div class = "col-lg-6">
+    <div class="box-element">
+        <h1>Sainsburys</h1>
+	<div class="cart-row">
+		<div style="flex:2"></div>
+		<div style="flex:2"><strong>Item</strong></div>
+		<div style="flex:1"><strong>Price</strong></div>
+		<div style="flex:1"><strong>Quantity</strong></div>
+		<div style="flex:1"><strong>Total</strong></div>
+	</div>
+
+	{% for item in items %}
+    {% if item.product.store == 'Sainsburys'%}
+	<div class="cart-row">
+		<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
+		<div style="flex:2"><p>{{item.product.product_by_id.name}}</p></div>
+		<div style="flex:1"><p>£{{item.product.price|floatformat:2}}</p></div>
+		<div style="flex:1">
+				<div class="inline-block">
+				<img data-product = {{item.product.id}} data-action = "remove" class="chg-quantity update-cart" src="{% static  'images/remove.png' %}"></div>
+                <p class="quantity">&nbsp&nbsp;{{item.quantity}}</p>
+				<div class="inline-block">
+				<img data-product = {{item.product.id}} data-action= "add" class="chg-quantity update-cart" src="{% static  'images/add.png' %}"></div>
+		</div>
+		<div style="flex:1"><p>£{{item.get_total}}</p></div>
+	</div>
+    {%endif%}
+	{% endfor %}
+	</div>
+</div>
+
+<div class = "col-lg-6">
+    <div class="box-element" id = "form-wrapper">
+        <h1>Tesco</h1>
+    </div></div>
+
+    <div class = "col-lg-6">
+        <div class="box-element" id = "form-wrapper">
+            <h1>Morrisons</h1>
+        </div></div>
+
+
+
+{% endblock content %}

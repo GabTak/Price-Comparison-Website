@@ -28,7 +28,19 @@ def help_page_view(request, *args, **kwargs):
     return render(request, "help.html")
 
 def cheapest_price_view(request, *args, **kwargs):
-    return render(request, "cheapest_price.html")
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer = customer)
+        items = order.orderitem_set.all()
+        cartTotal = order.orderitem_set.all().aggregate(sum = Sum('quantity'))['sum']
+        if cartTotal is None: cartTotal = ''
+
+    else:
+        items = []
+        cartTotal = ''
+    context = {'items' : items, 'cartTotal' : cartTotal}
+
+    return render(request, "cheapest_price.html", context)
 
 def login_page_view(request, *args, **kwargs):
 
