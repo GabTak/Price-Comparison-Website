@@ -21,7 +21,7 @@
 <a  class="btn btn-outline-dark" href="{% url 'contents' %}">Continue Shopping</a>
 <!--                               TESCO                          -->
 		<div class = "row">
-		<div class = "col-lg-6">
+		<div class = "col-lg-6 card-group">
 		<div class="box-element" id = "form-wrapper">
 			<h1>Tesco</h1>
 	<div class="cart-row">
@@ -56,7 +56,7 @@
 </div>
 
 <!--                               MORRISONS                         -->
-<div class = "col-lg-6">
+<div class = "col-lg-6 card-group">
 	<div class="box-element" id = "form-wrapper">
 		<h1>Morrisons</h1>
 <div class="cart-row">
@@ -91,7 +91,7 @@
 </div>
 
 <!--                               WAITROSE                          -->
-<div class = "col-lg-6">
+<div class = "col-lg-6 card-group">
 	<div class="box-element" id = "form-wrapper">
 		<h1>Waitrose</h1>
 <div class="cart-row">
@@ -126,7 +126,7 @@
 </div>
 
 <!--                               SAINSBURYS                         -->
-<div class = "col-lg-6">
+<div class = "col-lg-6 card-group">
 	<div class="box-element" id = "form-wrapper">
 		<h1>Sainsburys</h1>
 <div class="cart-row">
@@ -150,7 +150,7 @@
 <div class="cart-row">
 	<div style="flex:2"><img class="row-image" src="{{item.product.sainsburys_match_id.imageURL}}"></div>
 	<div style="flex:2"><p>{{item.product.sainsburys_match_id.name}}</p></div>
-	<div style="flex:1"><p>£{{item.product.sainburys_match_id.price|floatformat:2}}</p></div>
+	<div style="flex:1"><p>£{{item.product.sainsburys_match_id.price|floatformat:2}}</p></div>
 	<div style="flex:1"><p class="quantity">&nbsp&nbsp;{{item.quantity}}</p></div>
 	<div style="flex:1"><p>£{{item.get_total_sainsburys}}</p></div>
 </div>
