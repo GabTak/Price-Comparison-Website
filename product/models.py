@@ -76,6 +76,29 @@ class Order(models.Model):
     def __str__(self):
         return str(self.id)
 
+    @property
+    def get_total_price_tesco(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total_tesco for item in orderitems])
+        return total
+
+    @property
+    def get_total_price_waitrose(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total_waitrose for item in orderitems])
+        return total
+
+    @property
+    def get_total_price_sainsburys(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total_sainsburys for item in orderitems])
+        return total
+
+    @property
+    def get_total_price_morrisons(self):
+        orderitems = self.orderitem_set.all()
+        total = sum([item.get_total_morrisons for item in orderitems])
+        return total
 
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
@@ -85,4 +108,32 @@ class OrderItem(models.Model):
     @property
     def get_total(self):
         total = self.product.price * self.quantity
+        return total
+
+    @property
+    def get_total_tesco(self):
+        total = self.product.price * self.quantity
+        if (self.product.tesco_match != -1):
+            total = self.product.tesco_match_id.price * self.quantity
+        return total
+
+    @property
+    def get_total_waitrose(self):
+        total = self.product.price * self.quantity
+        if (self.product.waitrose_match != -1):
+            total = self.product.waitrose_match_id.price * self.quantity
+        return total
+
+    @property
+    def get_total_sainsburys(self):
+        total = self.product.price * self.quantity
+        if (self.product.sainsburys_match != -1):
+            total = self.product.sainsburys_match_id.price * self.quantity
+        return total
+
+    @property
+    def get_total_morrisons(self):
+        total = self.product.price * self.quantity
+        if (self.product.morrisons_match != -1):
+            total = self.product.morrisons_match_id.price * self.quantity
         return total

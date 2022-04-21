@@ -38,7 +38,7 @@ def cheapest_price_view(request, *args, **kwargs):
     else:
         items = []
         cartTotal = ''
-    context = {'items' : items, 'cartTotal' : cartTotal}
+    context = {'items' : items, 'cartTotal' : cartTotal, 'order' : order}
 
     return render(request, "cheapest_price.html", context)
 
