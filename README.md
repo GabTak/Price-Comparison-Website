@@ -41,3 +41,11 @@ q.clean()
 
 ![Clean all rows in database](https://user-images.githubusercontent.com/60928508/172754280-36e69bcd-32ec-4674-a33a-ed8e3f0cd892.png)
 
+
+## How to use the admin panel
+Because the website is local the user is allowed to use the admin panel.
+
+1.	In the browser URL the user should type “127.0.0.1:8000/admin/” this should take them to the admin page.
+2.	The username and password for admin are simple because this is for local use. The Username is ‘admin’ the password is ‘admin’.
+3.	The admin panel allows the user to add, or remove products, orders, customers, and order items. It is very important not to delete important things as they might break the usability of the website.
+
