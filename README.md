@@ -29,7 +29,7 @@ The user is not limited to items that are provided and can add their own.
 -	Sqlite3.exe db.sqlite3
 -	After that’s typed “.mode csv” should be typed
 -	Lastly, “.import [filename].csv product_product” should be typed. This should successfully upload the items to the database. 
--	
+
 ![rrr](https://user-images.githubusercontent.com/60928508/172754236-472af745-7f45-4ece-9a9f-60c517099b12.png)
 
 4.	Once the products are uploaded, there’s one more thing left to do. This is because the images for the products are not going to load properly. In the Visual Studio Code PowerShell, the user should type “Python manage.py shell”. 
