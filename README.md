@@ -4,11 +4,11 @@ This project is a price comparison website where users can add products from var
 
 # Operation
 
-1.	Before the user should have visual studio installed.
+1.	Before starting the user should have visual studio installed.
 2.	In Visual studio console, the user should type Pip install Django.
 3.	After installing Django, the user should type Pip install pillow.
 4.	Once the project code is downloaded along with Django and pillow modules and opened in Visual Studio Code the following command should be typed by the user into the Code Terminal “python manage.py runserver”, this command should provide a website link “http://127.0.0.1:8000/” which can be opened in the browser by entering it into the URL. 
-5.	If successful, the website will start on the home page. The usability of the website without creating an account is very limited, so the next step involves creating an account. On the navigation bar “log in” should be clicked, once on the login page under the big “Log In” button there’s a text saying “New? Sign in” this should be clicked to enter the registration page. A username and the password, and the password confirmation should be entered, if the user already exists or the password is wrong an error will show up and the fields will have to be filled out again. 
+5. If successful, the website will start on the home page. The usability of the website without creating an account is very limited, so the next step involves creating an account. On the navigation bar “log in” should be clicked, once on the login page under the big “Log In” button there’s a text saying “New? Sign in” this should be clicked to enter the registration page. A username and the password, and the password confirmation should be entered, if the user already exists or the password is wrong an error will show up and the fields will have to be filled out again. 
 6.	If registering was successful the user should be redirected to the login page, the login fields should be filled out with the previously created username and the password.
 7.	If the login was successful, the user should be redirected to the home page and their name should appear on the navigation bar “log out [user]” this indicates that the user is logged in. To log out simply click the “log out [user]” in the navigation bar.
 8.	The home page shows 4 stores, the user should click on the stores they want to see on the contents page, and the selected stores should change colour and show a tick, once the stores are selected the user should click apply button underneath.  
