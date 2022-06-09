@@ -4,6 +4,7 @@ This project is a price comparison website where users can add products from var
 
 # Operation
 
+## How to run the code and use the website
 1.	Before starting the user should have visual studio installed.
 2.	In Visual studio console, the user should type Pip install Django.
 3.	After installing Django, the user should type Pip install pillow.
