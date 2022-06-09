@@ -18,3 +18,22 @@ This project is a price comparison website where users can add products from var
 11.	If the user wants to filter the products, the blue hamburger menu in the top left corner should be clicked. Once clicked the side navigation bar will show up where the user can select which stores they want, the price range and even a specific item. The user should click the apply button once the filter fields are filled. 
 12.	To see the items that are added the user should click on the basket icon in the navigation bar. The user should get redirected to a basket page, where all of the added items can be seen, and the quantity of the items can be increased or decreased, the user has two other options Continue shopping or find the cheapest price. “Continue shopping” button will take the user back to the contents page, whilst the “Find cheapest price” button will take the user to the price comparing page. 
 13.	On the cheapest price page, the user can see the recommended items from the basket for each store and the overall price for it. This gives the user all of the information that they need to decide on where they would like to shop.  
+
+
+## How to add own items to the website
+The user is not limited to items that are provided and can add their own.
+
+1.	Use a scraping tool to get preferred items. The file should be in a CSV format.
+2.	Once the CSV file is acquired it should be formatted according to “coffee_database_updated.csv”. The fields have to be in the correct order because it determines what order they go into the database. The first field is the ID of a product, it must start one higher than the last ID in the database. E.g., ID 386 is the ID for the last product currently in the database, the custom CSV file should therefore start from 387. 
+3.	Once the CSV file is cleaned it is time to upload it to the database. In the Visual Studio PowerShell, the following commands should be typed:
+-	Sqlite3.exe db.sqlite3
+-	After that’s typed “.mode csv” should be typed
+-	Lastly, “.import [filename].csv product_product” should be typed. This should successfully upload the items to the database. 
+4.	Once the products are uploaded, there’s one more thing left to do. This is because the images for the products are not going to load properly. In the Visual Studio Code PowerShell, the user should type “Python manage.py shell”. 
+5.	In the shell the user should type the following commands one by one
+-	“from product.models import Product”
+-	query = Product.objects.all()
+-	for q in query.iterator():
+q.clean()
+
+
