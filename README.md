@@ -1,6 +1,6 @@
 # Price-Comparison-Website
 
-This project is a price comparison website where users can add products from various stores the basket. The total cost for the items in the basket is calculated for each store. This helps user pick which store is cheapest to shop at based on the chosen items.
+This project is a price comparison website where users can add products from various stores to the basket. The total cost for the items in the basket is calculated for each store. This helps user pick which store is cheapest to shop at based on the chosen items.
 
 # Operation
 
